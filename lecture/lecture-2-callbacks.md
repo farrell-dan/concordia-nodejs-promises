@@ -10,7 +10,7 @@ marp: true
 
 ---
 
-_Synchronous_: Things happens one at a time.
+_Synchronous_: Things happen one at a time.
 
 ---
 
@@ -81,7 +81,7 @@ console.log("do third thing");
 ### Important
 
 JavaScript _did_ execute the functions in the right order,
-but it **didn't wait for an answer (response)** before moving on to the next function to execute.
+but it **didn't wait for an answer (response)** before moving on to the next line to execute.
 
 ---
 
@@ -160,5 +160,5 @@ Sooo.... Is a callback _synchronous_ or _asynchronous_?
 
 Well that depends...
 
-- `setTimeout`, `setInterval`, requests, and events are asynchronous.
+- `setTimeout`, `setInterval`, fetch requests, and events are asynchronous.
 - most other callbacks are synchronous.

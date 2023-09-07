@@ -21,15 +21,15 @@ marp: true
 
 - In order to receive the value from a promise, we have to call its `.then()` method, and pass it a callback function.
 - `.then()` method makes the distinction between two callbacks:
-  - `successCallback` to which it passes a value in case of success
-  - `errorCallback` to which it passes an `Error` object.
+    - `successCallback` to which it passes a value in case of success
+    - `errorCallback` to which it passes an `Error` object.
 
 ---
 
 - Initially the Promise is **Pending**.
-- Eventually it will **settle** by either being
-  - **resolved** (success)
-  - **rejected** (error)
+- Eventually it will **settle** by either being:
+    - **resolved** (success)
+    - **rejected** (error)
 
 ```js
 const promise = new Promise((resolve, reject) => {
@@ -62,12 +62,12 @@ const isItPizza = (word) => {
 
 ---
 
-### `Promise` chaining:
+### `Promise` Chaining
 
 - The `.then` method of a Promise returns a **new Promise**.
 - The new Promise returned by calling `.then` will settle in the following way, depending on the return value of the `successCallback`:
   - is not a Promise, then the new Promise will be fulfilled with the return value of the `successCallback`.
-  - is a Promise, the new Promise will settle in the same way as the Promise returned from the `successCallback`
+  - is a Promise, the new Promise will settle in the same way as the Promise returned from the `successCallback`.
 
 _Since `.then()` returns a new Promise, this means we can "chain" `.then()` calls to create a waterfall of asynchronous operations._
 - chaining takes care of nested callbacks.

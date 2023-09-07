@@ -17,9 +17,9 @@ You don't need to go over ALL of the material. Just look through and watch/red t
 
 ## 🦉 Lecture
 
-- [lecture-0-review-call-stack.md](__lecture/lecture-0-review-call-stack.md)
-- [lecture-1-callbacks.md](__lecture/lecture-1-callbacks.md)
-- [lecture-2-promises.md](__lecture/lecture-2-promises.md)
+- [Lecture 1 | Call Stack](./lecture/lecture-1-call-stack.md)
+- [Lecture 2 | Callbacks](./lecture/lecture-2-callbacks.md)
+- [Lecture 3 | Promises](./lecture/lecture-3-promises.md)
 
 Keep in mind that these slides are not interactive, like in the actual lecture. Whenever possible, we will provide links to working code examples in Code Sandbox.
 
@@ -31,7 +31,7 @@ Keep in mind that these slides are not interactive, like in the actual lecture. 
 
 You will not need to spin up a server in this workshop. You can "run" the files individually in the terminal by doing `node <PATH_TO_FILE>`
 
-## Example
+## [Exercise 0](./workshop/exercise-0.js) - Example
 
 Here is an example. There is nothing to do for this example. You can use it as a guide, and to better understand Promises.
 
@@ -65,7 +65,7 @@ There is a copy of this code in `exercise-0.js`. You can run it from there.
 
 ## ⚡ Exercises
 
-### Exercise 1
+### [Exercise 1](./workshop/exercise-1.js)
 
 Write two functions that use Promises that you can chain!
 
@@ -103,11 +103,11 @@ In order to do these exercises, you might also need to know more about the [JSON
 
 ### Exercise 2 - Hello! Bonjour! Guten Tag!
 
-<img src="./__lecture/assets/hello_image.png" style="width: 100%;" alt="Hello" />
+<img src="./lecture/assets/hello_image.png" style="width: 100%;" alt="Hello" />
 
 For this exercise, we will be working with a homegrown API. Read the [Hello API Doc](./Hello-API-Doc.md) carefully.
 
-#### Exercise 2.1 - Testing
+#### [Exercise 2.1](./workshop/exercise-2.1.js) - Testing
 
 Write a Promise using `request-promise` that contacts the `/hello` API. Return the response.
 
@@ -130,7 +130,7 @@ const testGreeting = () => {
 
 Note that in Exercise 1, our promise didn't include a `catch()`. It was attached to the function call. From this exercise onward, let's move it into the promise and let it deal with the errors.
 
-#### Exercise 2.2 - How do I say "hello" in... ?
+#### [Exercise 2.2](./workshop/exercise-2.2.js) - How do I say "hello" in... ?
 
 Write a Promise using `request-promise` that contacts the `/hello` API. The function accepts one argument, the language code, and returns a greeting in that language.
 
@@ -142,7 +142,7 @@ The provided test case should console the appropriate greetings
 
 Call the function a few more times with other `langCode`s.
 
-#### Exercise 2.3 - Use the Error... gracefully
+#### [Exercise 2.3](./workshop/exercise-2.3.js) - Use the Error... gracefully
 
 Errors suck! Our API is pretty good at letting us know that there was an error and what the error was, but if you try a `langCode` that doesn't exist, you get this HUGE error object in the console that is pretty much useless, unless you want to scroll through the whole thing, and look for something useful...
 
@@ -173,13 +173,13 @@ Can you unpack what is happening here? What are we doing? Why?
 
 ### Exercise 3 - The International Space Station
 
-<img src="./__lecture/assets/iss_image.jpg" style="width: 100%;" alt="ISS" />
+<img src="./lecture/assets/iss_image.jpg" style="width: 100%;" alt="ISS" />
 
 > The International Space Station (ISS) is a modular space station (habitable artificial satellite) in low Earth orbit. The ISS program is a multi-national collaborative project between five participating space agencies: NASA (United States), Roscosmos (Russia), JAXA (Japan), ESA (Europe), and CSA (Canada). It is an international collaborative effort between multiple countries. The ownership and use of the space station is established by intergovernmental treaties and agreements. ([_Source_](https://en.wikipedia.org/wiki/International_Space_Station))
 
 In this exercise, we are going to work _with_ the ISS. 🤯
 
-### Exercise 3.1 - `getIssPosition`
+### [Exercise 3.1](./workshop/exercise-3.1.js) - `getIssPosition`
 
 The first thing we need to do is figure out where the ISS is at the moment. Thankfully, there is a [free API for that](http://api.open-notify.org/)!
 
@@ -188,7 +188,7 @@ The first thing we need to do is figure out where the ISS is at the moment. Than
 3. The ISS API returns the position keys as `latitude` and `longitude`. Return them as `lat` and `lng` instead.
 4. Don't forget to `require` the module you need (`request-promise`). _See a previous exercise, if you aren't sure._
 
-### Exercise 3.2 - `getPositionFromAddress`
+### [Exercise 3.2](./workshop/exercise-3.2.js) - `getPositionFromAddress`
 
 Getting the `lat` and `lng` of an address. Write a function that returns the coordinates of a given address.
 
@@ -197,7 +197,7 @@ Getting the `lat` and `lng` of an address. Write a function that returns the coo
    - Look up `dotenv` on NPM. _It's already been installed._ Comfirm this by looking at the `package.json`.
    - Once that is setup, copy the `.env.example` file and rename it `.env`. **Then add your API key to it.**
 
-<img src="./__lecture/assets/dotenv.png" />
+<img src="./lecture/assets/dotenv.png" />
 
 #### Note:
 
@@ -216,7 +216,7 @@ getPositionFromAddress(
 // (Concordia University)
 ```
 
-### Exercise 3.3 - `getAddressFromPosition`
+### [Exercise 3.3](./workshop/exercise-3.3.js) - `getAddressFromPosition`
 
 Getting the address of provided coordinates. Write a function that returns the address of given `lat` and `lng` coordinates.
 
@@ -237,7 +237,7 @@ getAddressFromPosition("48.858262", "2.294496").then((response) =>
   
 ---
 
-### Exercise 3.4 - `getDistanceFromIss`
+### [Exercise 3.4](./workshop/exercise-3.4.js) - `getDistanceFromIss`
 
 Let's put it all together!
 
@@ -274,7 +274,7 @@ One of the functions does address ==> position and the other simply does nothing
 
 ---
 
-### Exercise 4 - `Promise.all()`
+### [Exercise 4](./workshop/exercise-4.js) - `Promise.all()`
 
 This exercise will be more of a code-along. We'll be using the Hello API from the previous exercises.
 

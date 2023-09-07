@@ -83,13 +83,13 @@ callingMyself();
 
 Here is a typical request/response flow:
 
-1. Receive an HTTP request from a client
-2. Parse the HTTP request to understand it
-3. Find out that the request is asking about the last 10 blog posts in our database
-4. Make a request to the database (over the network)
-5. **Wait** for the database response to come back
-6. Parse the data and make it into an acceptable web format (HTML, JSON, XML)
-7. Send the response to the client
+1. Receive a `fetch` request from a client.
+2. Parse the `fetch` request to understand it.
+3. Find out that the request is asking about the last 10 blog posts in our database.
+4. Make a request to the database (over the network).
+5. **Wait** for the database response to come back.
+6. Parse the data and make it into an acceptable web format (HTML, JSON, XML).
+7. Send the response to the client.
 
 _Where is there a potential problem?_
 
@@ -97,9 +97,9 @@ _Where is there a potential problem?_
 
 #### The Node solution
 
-- Any `In / Out` functions are made _asynchronous_
-- Node uses a separate _thread_ under its control to do the `In / Out`
-- The `In / Out` function will **not `return` anything**
+- Any `In / Out` functions are made _asynchronous_.
+- Node uses a separate _thread_ under its control to do the `In / Out`.
+- The `In / Out` function will **not `return` anything**.
 - Instead, the `In / Out` function will take an additional parameter, a callback.
 - Node will register the callback function in its memory, and will call it back **later. When the database response comes back**.
 - We say that Node will call the callback function **asynchronously**.
@@ -135,14 +135,9 @@ fs.readFile("file.json", (err, val) => {
         console.error("unable to read file");
     } 
     else {
-        try {
-            // parse the file from JSON to JS
-            val = JSON.parse(val);
-            console.log(val.success); 
-        } 
-        catch (e) {
-            console.error("invalid json in file");
-        }
+        // parse the file from JSON to JS
+        val = JSON.parse(val);
+        console.log(val.success); 
     }
 });
 ```
@@ -150,13 +145,14 @@ fs.readFile("file.json", (err, val) => {
 ---
 
 The previous code contains a mix of synchronous (`JSON.parse`) and asynchronous (`fs.readFile`) code, showing the two modes of operation:
-`JSON.parse` `return`s its value synchronously. It can cause a `SyntaxError` when parsing its input, so we have to use `try`/`catch` to handle the error
-`fs.readFile` does not `return` anything! Instead, it accepts a callback function. When the disk access is done, Node calls the callback function and passes it the data. But because an error could have happened, and `throw` can't be used (no more call stack to catch it), the callback accepts an `err` as its first parameter. The callback handles the error by printing "unable to read file"
+`JSON.parse` returns its value synchronously. 
+
+`fs.readFile` does not `return` anything! Instead, it accepts a callback function. When the disk access is done, Node calls the callback function and passes it the data. But because an error could have happened, and `throw` can't be used (no more call stack to catch it), the callback accepts an `err` as its first parameter. The callback handles the error by printing "unable to read file".
 
 ---
 
 This mix of code styles has some drawbacks:
 
-- It is confusing because we can't easily know if a function is sync or async
-- It forces us to manually bubble up errors
-- It forces us to create awkward functions that have parameters that are not theirs -- `callback` for the async functions, and `err` for the callback
+- It is confusing because we can't easily know if a function is sync or async.
+- It forces us to manually bubble up errors.
+- It forces us to create awkward functions that have parameters that are not theirs -- `callback` for the async functions, and `err` for the callback.
